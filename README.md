@@ -93,27 +93,18 @@ PID namespace is "gold standard".
 
 1. `git clone https://github.com/thediveo/procfsroot`
 2. in VSCode: Ctrl+Shift+P, "Dev Containers: Open Workspace in Container..."
-3. select `enumflag.code-workspace` and off you go...
+3. select `procfsroot.code-workspace` and off you go...
 
-## VSCode Tasks
+## Supported Go Versions
 
-The included `procfsroot.code-workspace` defines the following tasks:
+`procfsroot` supports versions of Go that are noted by the [Go release
+policy](https://golang.org/doc/devel/release.html#policy), that is, major
+versions _N_ and _N_-1 (where _N_ is the current major version).
 
-- **Build workspace** task: builds all, including the shared library test
-  plugin.
+## Contributing
 
-- **Run all tests with coverage** task: does what it says on the tin and runs
-  all tests with coverage.
-
-## Make Targets
-
-- `make`: lists available targets.
-- `make test`: runs all tests.
-- `make coverage`: deprecated, use the `gocover` CLI command in the devcontainer
-  instead.
-- `make report`: deprecated, use the `goreportcard-cli` CLI command in the
-  devcontainer instead.
+Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Copyright and License
 
-Copyright 2021, 2025 Harald Albrecht, licensed under the Apache License, Version 2.0.
+Copyright 2021, 2026 Harald Albrecht, licensed under the Apache License, Version 2.0.

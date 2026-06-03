@@ -1,38 +1,41 @@
 {
     "name": "procfsroot",
     "portsAttributes": {
-        "6060": {
+        "16073": {
             "label": "enumflag package documentation",
             "onAutoForward": "notify",
             "protocol": "http"
         }
     },
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
-        "ghcr.io/thediveo/devcontainer-features/local-pkgsite:0": {},
-        "ghcr.io/thediveo/devcontainer-features/goreportcard:0": {},
-        "ghcr.io/thediveo/devcontainer-features/go-mod-upgrade:0": {},
-        "ghcr.io/thediveo/devcontainer-features/gocover:0": {
+        "ghcr.io/devcontainers/features/node:2": {},
+        "ghcr.io/devcontainers/features/go:1": {},
+        "ghcr.io/thediveo/devcontainer-features/local-pkgsite:1": {
+            "port": "16073"
+        },
+        "ghcr.io/thediveo/devcontainer-features/goreportcard:1": {},
+        "ghcr.io/thediveo/devcontainer-features/go-mod-upgrade:1": {},
+        "ghcr.io/thediveo/devcontainer-features/lazygit:0": {},
+        "ghcr.io/thediveo/devcontainer-features/gocover:1": {
             "num-programs": "1",
             "race": true,
             "verbose": true,
             "html": true
         },
-        "ghcr.io/thediveo/devcontainer-features/pin-github-action:0": {}
+        "ghcr.io/thediveo/devcontainer-features/pinact:0": {}
     },
     "remoteEnv": {
         "GOPATH": "/home/vscode/go",
         "PATH": "/home/vscode/go/bin:/go/bin:/usr/local/go/bin:${localEnv:PATH}"
     },
-    "postStartCommand": [
-        // we only need a fake docker "socket" in order to pass the testable
-        // example.
-        "sudo", "--", "bash", "-c", "touch /run/docker.sock"
-    ],
+    "postStartCommand": {
+        "fake-docker-socket": "sudo -- bash -c 'touch /run/docker.sock'"
+    },
     "customizations": {
         "vscode": {
             "extensions": [
-                "stkb.rewrap",
+                "dnut.rewrap-revived",
                 "brunnerh.insert-unicode",
                 "mhutchie.git-graph",
                 "ms-vscode.makefile-tools"
