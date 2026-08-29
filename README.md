@@ -3,8 +3,7 @@
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/thediveo/procfsroot)](https://pkg.go.dev/github.com/thediveo/procfsroot)
 [![GitHub](https://img.shields.io/github/license/thediveo/procfsroot)](https://img.shields.io/github/license/thediveo/procfsroot)
 ![build and test](https://github.com/thediveo/procfsroot/actions/workflows/buildandtest.yaml/badge.svg?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/thediveo/procfsroot)](https://goreportcard.com/report/github.com/thediveo/procfsroot)
-![Coverage](https://img.shields.io/badge/Coverage-96.9%25-brightgreen)
+![Coverage](https://img.shields.io/badge/Coverage-95.1%25-brightgreen)
 
 `procfsroot` is a small Go module that helps with accessing file system paths
 containing absolute symbolic links that are to be taken relative (sic!) to a
@@ -18,6 +17,32 @@ For devcontainer instructions, please see the [section "DevContainer"
 below](#devcontainer).
 
 ## Usage
+
+We basically support these two different usage scenarios:
+
+1. Wormhole `fs.FS`
+2. low-level DIY, especially for those usecases which `fs.FS` and its additional
+   extensions currently cannot cover (especially write access to the VFS).
+
+### Wormhole FS
+
+In case you are less DIY-inclined and don't see abstractions as distractions,
+then please enjoy the "wormhole" FS:
+
+```go
+import (
+    "os"
+    "github.com/thediveo/procfsroot/wormholes"
+)
+
+func main() {
+    wh, err := wormholes.New(1)
+    f, err := wh.Open("/var/run/docker.sock")
+    defer f.Close()
+}
+```
+
+### DIY
 
 `procfsroot.EvalSymlinks()` mirrors Golang's
 [`filepath.EvalSymlinks`](https://golang.org/pkg/path/filepath/#EvalSymlinks),
