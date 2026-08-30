@@ -30,7 +30,7 @@ const fsroot = "/root" // ...somewhere inside our temporary testing directory
 func createFile(fs afero.Fs, name string, contents string) {
 	GinkgoHelper()
 	f := Successful(fs.Create(name))
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 	Expect(f.WriteString(contents)).Error().NotTo(HaveOccurred())
 }
 

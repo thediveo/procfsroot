@@ -1,7 +1,7 @@
 {
     "name": "procfsroot",
     "portsAttributes": {
-        "16073": {
+        "6060": {
             "label": "enumflag package documentation",
             "onAutoForward": "notify",
             "protocol": "http"
@@ -12,12 +12,13 @@
         "ghcr.io/devcontainers/features/node:2": {},
         "ghcr.io/devcontainers/features/go:1": {},
         "ghcr.io/thediveo/devcontainer-features/local-pkgsite:1": {
-            "port": "16073"
+            "port": "6060"
         },
         "ghcr.io/thediveo/devcontainer-features/goreportcard:1": {},
         "ghcr.io/thediveo/devcontainer-features/go-mod-upgrade:1": {},
         "ghcr.io/thediveo/devcontainer-features/lazygit:0": {},
         "ghcr.io/thediveo/devcontainer-features/gocover:1": {
+            "root": true,
             "num-programs": "1",
             "race": true,
             "verbose": true,
@@ -38,7 +39,7 @@
                 "dnut.rewrap-revived",
                 "brunnerh.insert-unicode",
                 "mhutchie.git-graph",
-                "ms-vscode.makefile-tools"
+                "ms-vscode.live-server"
             ]
         }
     }
