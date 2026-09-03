@@ -14,7 +14,6 @@
         "ghcr.io/thediveo/devcontainer-features/local-pkgsite:1": {
             "port": "6060"
         },
-        "ghcr.io/thediveo/devcontainer-features/goreportcard:1": {},
         "ghcr.io/thediveo/devcontainer-features/go-mod-upgrade:1": {},
         "ghcr.io/thediveo/devcontainer-features/lazygit:0": {},
         "ghcr.io/thediveo/devcontainer-features/gocover:1": {
